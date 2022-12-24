@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void playGame()
     {
-        SceneManager.LoadScene("Game"); // go from sceneNum = 0(main menu) to sceneNum = 1(game)
+        SceneManager.LoadScene("Game2"); // go from sceneNum = 0(main menu) to sceneNum = 1(game)
     }   
     public void goToInstructions()
     {
