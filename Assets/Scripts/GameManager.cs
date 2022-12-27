@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponsScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    // TO-DO add bool that sets current weapon, to prevent shoot animation in sword mode, and melee animation in bow mode
+    public int currentGold;
     public int currentWeapon; // 0 sword, 1 bow
     public GameObject[] weapons;
+    bool foundBow = false; //set player weapon to only sword
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +18,22 @@ public class WeaponsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        if(Input.GetKeyDown(KeyCode.Alpha1) && foundBow) { //once bow is found
         changeWeapon(1);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha0)) {
         changeWeapon(0);
         }
+    }
+
+    public void addGold(int goldCollected)
+    {
+        currentGold += goldCollected;
+    }
+
+    public void addBow() //found bow upgrade, enable bow and switch weapon mechanics
+    {
+        foundBow = true;
     }
 
     public void changeWeapon(int num)
