@@ -33,8 +33,43 @@ public class PlayerMovement : MonoBehaviour
         //rb.velocity = new Vector3(horizontalInput * moveSpeed, rb.velocity.y, verticalInput * moveSpeed);
         Quaternion rotation = Quaternion.Euler(0, Mathf.Atan2(horizontalInput, verticalInput) * Mathf.Rad2Deg, 0);
         
+        //rb.rotation = Quaternion.LookRotation(rb.velocity);
+        //rb.rotation = Quaternion.LookRotation(rotation * Vector3.forward, Vector3.up); // to make the character stay vertical while jumping
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            rb.rotation = Quaternion.Slerp(rb.rotation, rotation, turnSmooth * Time.deltaTime);
+            rb.constraints = RigidbodyConstraints.FreezeRotationX; //stop character from
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
+        }
+        else
+        { //not working currently, fixed spinning, but now character SLOWLY falling over, overriden by something?
+            rb.constraints = RigidbodyConstraints.FreezeRotationY; //stop character from spinning randomly when idle
+            rb.constraints = RigidbodyConstraints.FreezeRotationX; //stop character from
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
+        }
+        
+        // attack sword
+        if(Input.GetButtonDown("Fire3") && IsGrounded()) // left shift
+        {
+            anim.SetBool("isAttacking", true);
+        }
+        else
+        {
+            anim.SetBool("isAttacking", false);
+        }
+
+        // attack bow
+        if(Input.GetButton("Fire1") && IsGrounded()) // left ctrl
+        {
+            anim.SetBool("isShooting", true);
+        }
+        else
+        {
+            anim.SetBool("isShooting", false);
+        }
+
         // jump
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if(Input.GetButtonDown("Jump") && IsGrounded()) // spacebar
         {
             rb.velocity = new Vector3(horizontalInput * moveSpeed, jumpSpeed, verticalInput * moveSpeed);
         }
@@ -42,27 +77,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(horizontalInput * moveSpeed, rb.velocity.y, verticalInput * moveSpeed);
         }
-        //rb.rotation = Quaternion.LookRotation(rb.velocity);
-        //rb.rotation = Quaternion.LookRotation(rotation * Vector3.forward, Vector3.up); // to make the character stay vertical while jumping
-        rb.rotation = Quaternion.Slerp(rb.rotation, rotation, turnSmooth * Time.deltaTime);
 
         anim.SetBool("isGrounded", IsGrounded());
         anim.SetFloat("speed", (Mathf.Abs(verticalInput)) + (Mathf.Abs(horizontalInput)));
-
-                
-        /*if(Input.GetKey(KeyCode.RightArrow))
-        {
-            Debug.Log("right");
-            //anim.SetBool("isMovingRight", true);
-            //anim.SetBool("IsMovingLeft", false);
-        }
-        else if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            anim.SetBool("IsMovingLeft", true);
-        }*/
     }
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
+    }
+
+    protected void LateUpdate()
+    {
+            rb.constraints = RigidbodyConstraints.FreezeRotationX; //stop character from
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
     }
 }
