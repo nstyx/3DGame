@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public int currentGold;
+    public int arrowAmmo;
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI arrowAmmoText;
     public int currentWeapon; // 0 sword, 1 bow
     public GameObject[] weapons;
     bool foundBow = false; //set player weapon to only sword
@@ -29,11 +34,18 @@ public class GameManager : MonoBehaviour
     public void addGold(int goldCollected)
     {
         currentGold += goldCollected;
+        goldText.text = "Gold: " + currentGold;
     }
 
     public void addBow() //found bow upgrade, enable bow and switch weapon mechanics
     {
         foundBow = true;
+    }
+
+    public void addArrow(int arrowNum)
+    {
+        arrowAmmo += arrowNum;
+        arrowAmmoText.text = "" + arrowAmmo;
     }
 
     public void changeWeapon(int num)

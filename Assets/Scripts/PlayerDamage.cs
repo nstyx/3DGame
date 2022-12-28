@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldPickup : MonoBehaviour
+public class PlayerDamage : MonoBehaviour
 {
-    public int gold = 1;
+    public int testDamage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +21,7 @@ public class GoldPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            FindObjectOfType<GameManager>().addGold(gold);
-            Destroy(gameObject);
-
+            FindObjectOfType<HealthManager>().playerDamage(testDamage);
         }
     }
 }
