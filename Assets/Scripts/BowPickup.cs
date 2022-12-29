@@ -21,7 +21,7 @@ public class BowPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            FindObjectOfType<GameManager>().addBow();
+            FindObjectOfType<GameManager>().addBook();
             Destroy(gameObject);
 
         }
