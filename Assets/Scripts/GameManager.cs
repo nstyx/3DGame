@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] weapons;
     public bool foundBook = false; //set player weapon to only sword
 
+    public PlayerAttack PA;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void addBook() //found bow upgrade, enable book and switch weapon mechanics
     {
-        foundBook = true;
+        PA.foundBook = true;
     }
 
     public void addSpellAmmo(int spellNum)

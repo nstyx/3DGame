@@ -29,7 +29,7 @@ public class HealthManager : MonoBehaviour
 
         if(currentHealth < 1)
         {
-            //implement death
+            //implement death -> activate death animation + show end screen
         }
     }
 

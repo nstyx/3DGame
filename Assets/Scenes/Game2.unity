@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b70b156b60a1413b86df23fadd34001, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b70b156b60a1413b86df23fadd34001, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1039,7 +1039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317823749142253822, guid: d4958227484245e4592c41ab2c02ad22, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6366871878821540098, guid: d4958227484245e4592c41ab2c02ad22, type: 3}
       propertyPath: m_Convex
@@ -1513,6 +1513,7 @@ GameObject:
   - component: {fileID: 440010151}
   - component: {fileID: 440010149}
   - component: {fileID: 440010155}
+  - component: {fileID: 440010156}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -1635,8 +1636,24 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  GM: {fileID: 2084316227}
   anim: {fileID: 539591777}
+--- !u!114 &440010156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440010148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd14acb4585f74e78aa5c1e66f95a1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castPoint: {fileID: 809064369}
+  spelltoCast: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+  spellSpeed: 8
+  anim: {fileID: 539591777}
+  foundBook: 0
 --- !u!1001 &442670666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2579,6 +2596,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7893091474488252583, guid: 03603f558f3f346138a83d7824f547f9, type: 3}
   m_PrefabInstance: {fileID: 412282188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &809064368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809064369}
+  m_Layer: 0
+  m_Name: SpellCastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809064369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809064368}
+  m_LocalRotation: {x: -0.45558435, y: 0.25937945, z: 0.72279274, w: 0.45026195}
+  m_LocalPosition: {x: -0.015, y: 0.043, z: -0.002}
+  m_LocalScale: {x: 0.39999995, y: 0.39999992, z: 0.39999995}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1806345185}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -128.259, y: 136.657, z: -42.02698}
 --- !u!1001 &827921352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3539,9 +3587,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7635280349139532182, guid: 166b92b7222fe8344a671615701d3657, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9104321445825918880, guid: 166b92b7222fe8344a671615701d3657, type: 3}
       propertyPath: m_Name
       value: Flat_Wall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104321445825918880, guid: 166b92b7222fe8344a671615701d3657, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b92b7222fe8344a671615701d3657, type: 3}
@@ -4030,6 +4086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b92b7222fe8344a671615701d3657, type: 3}
+--- !u!4 &1806345185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 8b70b156b60a1413b86df23fadd34001, type: 3}
+  m_PrefabInstance: {fileID: 6301813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1872823229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3317823749142253822, guid: d4958227484245e4592c41ab2c02ad22, type: 3}
@@ -4612,6 +4673,7 @@ MonoBehaviour:
   - {fileID: 1962561422}
   - {fileID: 256541078}
   foundBook: 0
+  PA: {fileID: 440010156}
 --- !u!4 &2084316228
 Transform:
   m_ObjectHideFlags: 0
@@ -4625,7 +4687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2084316229
 MonoBehaviour:
@@ -4852,7 +4914,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6420560942207200342, guid: dae4b821706814169adb8b07896da8d9, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6420560942207200342, guid: dae4b821706814169adb8b07896da8d9, type: 3}
       propertyPath: m_LocalPosition.x

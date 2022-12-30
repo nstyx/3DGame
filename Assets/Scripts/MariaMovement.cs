@@ -13,8 +13,7 @@ public class MariaMovement : MonoBehaviour
 
     Vector3 moveDirection;
     float turnSmooth = 15;
-
-    public GameManager GM; // pass GameManager to check if player can use spells with "foundBook"
+    
     public Animator anim;
     
     
@@ -44,6 +43,8 @@ public class MariaMovement : MonoBehaviour
         }
         else
         { //not working currently, fixed spinning, but now character SLOWLY falling over, overriden by something?
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
             rb.constraints = RigidbodyConstraints.FreezeRotationY; //stop character from spinning randomly when idle
             rb.constraints = RigidbodyConstraints.FreezeRotationX; //stop character from
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
@@ -57,16 +58,6 @@ public class MariaMovement : MonoBehaviour
         else
         {
             anim.SetBool("isAttacking", false);
-        }
-
-        // attack bow
-        if(Input.GetButton("Fire1") && IsGrounded() && GM.foundBook) // left ctrl
-        {
-            anim.SetBool("isShooting", true);
-        }
-        else
-        {
-            anim.SetBool("isShooting", false);
         }
 
         // jump
