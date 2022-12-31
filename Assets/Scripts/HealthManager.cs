@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public TextMeshProUGUI healthText;
+    public GameObject[] Swords; // 0=big, 1=med, 2=small
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,25 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // sword size ranges: 70-100 Big, 40-69 Medium, 1-39 Small
+        if(currentHealth > 69)
+        {
+            Swords[0].gameObject.SetActive(true);
+            Swords[1].gameObject.SetActive(false);
+            Swords[2].gameObject.SetActive(false);
+        }
+        if(currentHealth > 39 && currentHealth < 70)
+        {
+            Swords[0].gameObject.SetActive(false);
+            Swords[1].gameObject.SetActive(true);
+            Swords[2].gameObject.SetActive(false);
+        }
+        if(currentHealth > 0 && currentHealth < 40)
+        {
+            Swords[0].gameObject.SetActive(false);
+            Swords[1].gameObject.SetActive(false);
+            Swords[2].gameObject.SetActive(true);
+        }
         
     }
 
