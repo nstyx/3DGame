@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spellAmmoPickup : MonoBehaviour
 {
-    public int spellNum = 1;
+    public int spellNum = 10; // 1 book = 10 spell ammo
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,6 @@ public class spellAmmoPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            FindObjectOfType<GameManager>().addSpellAmmo(spellNum);
             Destroy(gameObject);
 
         }

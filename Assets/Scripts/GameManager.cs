@@ -7,19 +7,19 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public int currentGold;
-    public int spellAmmo;
     public TextMeshProUGUI goldText;
-    public TextMeshProUGUI spellAmmoText;
-    public int currentWeapon; // 0 sword, 1 bow
     public GameObject[] weapons;
+    public GameObject[] MagicBallBars; // 0 = ON, 1 = OFF
     public bool foundBook = false; //set player weapon to only sword
+    bool weaponSword = true;
+    bool weaponMagicSpell = false;
 
     public PlayerAttack PA;
 
     // Start is called before the first frame update
     void Start()
     {
-        // changeWeapon(0);
+
     }
 
     //Done: remove bow, player will be able to cast spell from standard anim once "book" is found, change bow for book
@@ -29,12 +29,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.Alpha1) && foundBook) { //once book is found
-        changeWeapon(1);
+        if(PA.spellAmmo < 1)
+        {
+            MagicBallBars[1].gameObject.SetActive(true); //if no ammo deactivate spellUI
+            MagicBallBars[0].gameObject.SetActive(false);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha0)) {
-        changeWeapon(0);
-        }*/
+
     }
 
     public void addGold(int goldCollected)
@@ -43,30 +43,18 @@ public class GameManager : MonoBehaviour
         goldText.text = "Gold: " + currentGold;
     }
 
-    public void addBook() //found bow upgrade, enable book and switch weapon mechanics
+    public void addBook() //found book upgrade, enable book and add
     {
-        PA.foundBook = true;
-    }
+        MagicBallBars[1].gameObject.SetActive(false);
+        MagicBallBars[0].gameObject.SetActive(true);//activate spell UI
 
-    public void addSpellAmmo(int spellNum)
-    {
-        spellAmmo += spellNum;
-        spellAmmoText.text = "" + spellAmmo;
-    }
-    /*
-    public void changeWeapon(int num)
-    {
-        currentWeapon = num;
-        for (int i = 0; i < weapons.Length; i++)
+        if(!foundBook)
         {
-            if(i == num) //weapon selected
-            {
-                weapons[i].gameObject.SetActive(true);
-            }
-            else //other weapon deactivated
-            {
-                weapons[i].gameObject.SetActive(false);
-            }
+            PA.foundBook = true;
+            weaponMagicSpell = true;
         }
-    }*/
+
+        PA.spellAmmo += 10;
+        PA.updateAmmo();
+    }
 }
