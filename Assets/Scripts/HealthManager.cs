@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
     public int currentHealth;
     public TextMeshProUGUI healthText;
     public GameObject[] Swords; // 0=big, 1=med, 2=small
+    public bool isInvincible = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +41,23 @@ public class HealthManager : MonoBehaviour
             Swords[1].gameObject.SetActive(false);
             Swords[2].gameObject.SetActive(true);
         }
+
+
+        if(Input.GetButtonDown("Invincibility"))
+        {
+            if(isInvincible) isInvincible = false;
+            else isInvincible = true;
+        }
         
     }
 
     public void playerDamage(int dmg)
     {
-        currentHealth -= dmg;
-        healthText.text = "Health: " + currentHealth;
+        if(!isInvincible)
+        {
+            currentHealth -= dmg;
+            healthText.text = "Health: " + currentHealth;
+        }
 
         if(currentHealth < 1)
         {

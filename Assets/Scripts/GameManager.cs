@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] weapons;
     public GameObject[] MagicBallBars; // 0 = ON, 1 = OFF
     public bool foundBook = false; //set player weapon to only sword
-    bool weaponSword = true;
-    bool weaponMagicSpell = false;
+    // bool weaponSword = true;
+    // bool weaponMagicSpell = false;
 
     public PlayerAttack PA;
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         if(!foundBook)
         {
             PA.foundBook = true;
-            weaponMagicSpell = true;
+            //weaponMagicSpell = true;
         }
 
         PA.spellAmmo += 10;
