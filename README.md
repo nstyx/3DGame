@@ -5,12 +5,13 @@ Current:
 - Main menu screen with navigation
 - Character + (run + jump + melee attack + range attack) animations
 - sword
-- bow
+- magic spell with collision
 - gold
 - health potions
-- arrows
-- gold + health + arrow count UI elements
+- books(magic spell ammo)
+- gold + health + spellammo count UI elements
+- pause menu
 
 
 Things:
-Valid prefabs for use: "Gold", "HealthPotion", "Arrow" --> IGNORE OTHER PREFABS
+Valid prefabs for use: "Gold", "HealthPotion", "Ereki02"(magic spell) --> IGNORE OTHER PREFABS
