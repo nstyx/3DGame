@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int currentGold;
     public TextMeshProUGUI goldText;
-    public GameObject[] weapons;
-    public GameObject[] MagicBallBars; // 0 = ON, 1 = OFF
+    public GameObject[] MagicBallUIBars; // 0 = ON, 1 = OFF
     public bool foundBook = false; //set player weapon to only sword
     // bool weaponSword = true;
     // bool weaponMagicSpell = false;
@@ -19,7 +18,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     //Done: remove bow, player will be able to cast spell from standard anim once "book" is found, change bow for book
@@ -31,10 +29,9 @@ public class GameManager : MonoBehaviour
     {
         if(PA.spellAmmo < 1)
         {
-            MagicBallBars[1].gameObject.SetActive(true); //if no ammo deactivate spellUI
-            MagicBallBars[0].gameObject.SetActive(false);
+            MagicBallUIBars[1].gameObject.SetActive(true); //if no ammo deactivate spellUI
+            MagicBallUIBars[0].gameObject.SetActive(false);
         }
-
     }
 
     public void addGold(int goldCollected)
@@ -45,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     public void addBook() //found book upgrade, enable book and add
     {
-        MagicBallBars[1].gameObject.SetActive(false);
-        MagicBallBars[0].gameObject.SetActive(true);//activate spell UI
+        MagicBallUIBars[1].gameObject.SetActive(false);
+        MagicBallUIBars[0].gameObject.SetActive(true);//activate spell UI
 
         if(!foundBook)
         {

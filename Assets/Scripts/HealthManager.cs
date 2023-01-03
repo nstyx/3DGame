@@ -11,10 +11,14 @@ public class HealthManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public GameObject[] Swords; // 0=big, 1=med, 2=small
     public bool isInvincible = false;
+    public static bool playerDied; //make global?
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerDied = false;
+        anim.SetBool("isDead", false);
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth; // initial load
     }
@@ -61,7 +65,8 @@ public class HealthManager : MonoBehaviour
 
         if(currentHealth < 1)
         {
-            //implement death -> activate death animation + show end screen
+            playerDied = true;
+            anim.SetBool("isDead", true);
         }
     }
 
