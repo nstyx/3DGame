@@ -59,16 +59,6 @@ public class MariaMovement : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
             }
             
-            // attack sword
-            if(Input.GetButtonDown("Fire3") && IsGrounded()) // left shift
-            {
-                anim.SetBool("isAttacking", true);
-            }
-            else
-            {
-                anim.SetBool("isAttacking", false);
-            }
-
             // jump
             if(Input.GetButtonDown("Jump") && IsGrounded()) // spacebar
             {

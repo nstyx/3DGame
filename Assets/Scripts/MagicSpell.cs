@@ -19,19 +19,27 @@ public class MagicSpell : MonoBehaviour
         //Debug.Log("Colliding with Wall?: " + IsCollidingWithWall());
         
     }
-    private void OnCollisionEnter(Collision collision) //current collision for magicball, hit everything except player
+    private void OnCollisionEnter(Collision collision) // used for hit-bounce collision
     {
-        if(!collision.gameObject.CompareTag("Player"))
+        if(!collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy")) // if not player or enemy, aka, any scene item, destroy
         {
             Destroy(gameObject);
         }
+
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.TryGetComponent<BasicEnemy>(out BasicEnemy enemy); //get enemy object
+            enemy.Damaged(1); //magic spell deals 1 damage
+        }
     }
 
-    private void OnTriggerEnter(Collider other) //apply damage to enemies or whatever
-    {
-        if(other.tag == "Player")
+    private void OnTriggerEnter(Collider other) // used for pass-through collisions, needs 1(not 2) Is Trigger to true
+    {                                             // currently disabled because magic ball sphere collider Is Trigger is false
+        Debug.Log("hit something");               // problem-> ball is hitting player when spawning
+        if(other.tag == "Enemy")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Debug.Log("hit enemy");
 
         }
     }
