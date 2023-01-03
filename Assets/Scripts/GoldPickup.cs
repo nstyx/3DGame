@@ -21,6 +21,7 @@ public class GoldPickup : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            GameManager.currentGold += 1;
             FindObjectOfType<GameManager>().addGold(gold);
             Destroy(gameObject);
 

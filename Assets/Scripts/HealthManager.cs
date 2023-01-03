@@ -13,13 +13,19 @@ public class HealthManager : MonoBehaviour
     public bool isInvincible = false;
     public static bool playerDied; //make global?
     public Animator anim;
+    static bool firstScene = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(firstScene)
+        {
+            firstScene = false;
+            currentHealth = maxHealth;
+        }
+        Debug.Log("health: " + currentHealth);
         playerDied = false;
         anim.SetBool("isDead", false);
-        currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth; // initial load
     }
 

@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    static public int currentGold;
+    public static int currentGold;
     public TextMeshProUGUI goldText;
     public GameObject[] MagicBallUIBars; // 0 = ON, 1 = OFF
     static public bool foundBook = false; //set player weapon to only sword
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        goldText.text = "Gold: " + currentGold; //update UI gold on each scene init
     }
 
     //Done: remove bow, player will be able to cast spell from standard anim once "book" is found, change bow for book
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void addGold(int goldCollected)
     {
-        currentGold += goldCollected;
+        //currentGold += goldCollected;
         goldText.text = "Gold: " + currentGold;
     }
 
