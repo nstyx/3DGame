@@ -18,14 +18,17 @@ public class SwordDoDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) // used for pass-through collisions, needs 1(not 2) Is Trigger to true
     {
-        Debug.Log("hit something");
         if(other.tag == "Enemy")
         {
             //Destroy(gameObject);
-            Debug.Log("hit enemy");
             other.gameObject.TryGetComponent<BasicEnemy>(out BasicEnemy enemy); //get enemy object
             enemy.Damaged(1); //sword deals 1 damage
 
+        }
+        if(other.tag == "Lever")
+        {
+            other.gameObject.TryGetComponent<Lever>(out Lever lever);
+            lever.OpenLever();
         }
     }
 }

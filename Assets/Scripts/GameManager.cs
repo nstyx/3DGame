@@ -6,10 +6,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int currentGold;
+    static public int currentGold;
     public TextMeshProUGUI goldText;
     public GameObject[] MagicBallUIBars; // 0 = ON, 1 = OFF
-    public bool foundBook = false; //set player weapon to only sword
+    static public bool foundBook = false; //set player weapon to only sword
     // bool weaponSword = true;
     // bool weaponMagicSpell = false;
 

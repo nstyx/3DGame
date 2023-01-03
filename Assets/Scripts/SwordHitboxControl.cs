@@ -16,7 +16,7 @@ public class SwordHitboxControl : MonoBehaviour
         sw2 = joinItemSwords.GetChild(1).gameObject;
         sw3 = joinItemSwords.GetChild(2).gameObject;
 
-        if(sw1.activeSelf) swordBig.enabled = false;
+        if(!sw1.activeSelf) swordBig.enabled = false;
         if(sw2.activeSelf) swordMedium.enabled = false;
         if(sw3.activeSelf) swordSmall.enabled = false;
     }
@@ -24,13 +24,14 @@ public class SwordHitboxControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(sw1.activeSelf) swordBig.enabled = false;
+        if(sw2.activeSelf) swordMedium.enabled = false;
+        if(sw3.activeSelf) swordSmall.enabled = false;
     }
     public void AttackStart()
     {
         if(sw1.activeSelf) //bigsword
         {
-            Debug.Log("here");
             swordBig.enabled = true;
         }
         else if(sw2.activeSelf) //mediumsword

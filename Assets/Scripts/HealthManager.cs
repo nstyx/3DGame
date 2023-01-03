@@ -7,7 +7,7 @@ using TMPro;
 public class HealthManager : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currentHealth;
+    static public int currentHealth;
     public TextMeshProUGUI healthText;
     public GameObject[] Swords; // 0=big, 1=med, 2=small
     public bool isInvincible = false;

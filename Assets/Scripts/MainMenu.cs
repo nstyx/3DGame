@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void playGame()
     {
-        SceneManager.LoadScene("LV1-CH1"); // go from sceneNum = 0(main menu) to sceneNum = 1(game)
+        SceneManager.LoadScene("Chamber1-1"); // go from sceneNum = 0(main menu) to sceneNum = 1(game)
     }   
     public void goToInstructions()
     {
