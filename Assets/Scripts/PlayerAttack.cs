@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject spelltoCast;
     public TextMeshProUGUI spellAmmoText;
     public float spellSpeed = 8f;
-    public Animator anim;    
+    public Animator anim;
     public bool foundBook = false;
     public int spellAmmo = 0;
 

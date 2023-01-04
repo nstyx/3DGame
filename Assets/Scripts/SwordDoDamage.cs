@@ -21,14 +21,10 @@ public class SwordDoDamage : MonoBehaviour
         if(other.tag == "Enemy")
         {
             //Destroy(gameObject);
-            other.gameObject.TryGetComponent<BasicEnemy>(out BasicEnemy enemy); //get enemy object
+            //other.gameObject.TryGetComponent<BasicEnemy>(out BasicEnemy enemy);
+            other.gameObject.TryGetComponent<EnemyFollow>(out EnemyFollow enemy); //get enemy object
             enemy.Damaged(1); //sword deals 1 damage
 
-        }
-        if(other.tag == "Lever")
-        {
-            other.gameObject.TryGetComponent<Lever>(out Lever lever);
-            lever.OpenLever();
         }
     }
 }

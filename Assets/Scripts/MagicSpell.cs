@@ -26,20 +26,23 @@ public class MagicSpell : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(collision.gameObject.CompareTag("Enemy"))
+        /*if(collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.TryGetComponent<BasicEnemy>(out BasicEnemy enemy); //get enemy object
-            enemy.Damaged(1); //magic spell deals 1 damage
-        }
+            collision.gameObject.TryGetComponent<EnemyFollow>(out EnemyFollow enemy); //get enemy object
+            enemy.Damaged(1); //magic spell deals 3 damage
+        }*/
     }
 
     private void OnTriggerEnter(Collider other) // used for pass-through collisions, needs 1(not 2) Is Trigger to true
     {                                             // currently disabled because magic ball sphere collider Is Trigger is false
-        Debug.Log("hit something");               // problem-> ball is hitting player when spawning
+                                               // problem-> ball is hitting player when spawning
+        
         if(other.tag == "Enemy")
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             Debug.Log("hit enemy");
+            other.gameObject.TryGetComponent<EnemyFollow>(out EnemyFollow enemy); //get enemy object
+            enemy.Damaged(3); //magic deals 3 damage
 
         }
     }

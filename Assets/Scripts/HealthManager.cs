@@ -23,7 +23,6 @@ public class HealthManager : MonoBehaviour
             firstScene = false;
             currentHealth = maxHealth;
         }
-        Debug.Log("health: " + currentHealth);
         playerDied = false;
         anim.SetBool("isDead", false);
         healthText.text = "Health: " + currentHealth; // initial load
