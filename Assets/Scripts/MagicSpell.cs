@@ -23,6 +23,7 @@ public class MagicSpell : MonoBehaviour
     {
         if(!collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy")) // if not player or enemy, aka, any scene item, destroy
         {
+            Debug.Log("hit something");
             Destroy(gameObject);
         }
 
@@ -34,15 +35,15 @@ public class MagicSpell : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) // used for pass-through collisions, needs 1(not 2) Is Trigger to true
-    {                                             // currently disabled because magic ball sphere collider Is Trigger is false
+    {                                             // currently used to hit enemies and not send them flying
                                                // problem-> ball is hitting player when spawning
         
         if(other.tag == "Enemy")
         {
-            Destroy(gameObject);
-            Debug.Log("hit enemy");
+            Debug.Log("hit enemy 2");
             other.gameObject.TryGetComponent<EnemyFollow>(out EnemyFollow enemy); //get enemy object
             enemy.Damaged(3); //magic deals 3 damage
+            Destroy(gameObject);
 
         }
     }

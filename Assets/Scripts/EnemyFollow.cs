@@ -16,6 +16,10 @@ public class EnemyFollow : MonoBehaviour
 
     public LayerMask whatIsPlayer;
     public Animator anim;
+    public BoxCollider swordCollider;
+
+    private bool attacked = false;
+    private float attackDelay = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +27,7 @@ public class EnemyFollow : MonoBehaviour
         currentHealth = maxHealth;
         anim.SetBool("isEnemy1Attacking", false);
         anim.SetBool("isEnemy1Walking", false);
+        swordCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -56,11 +61,23 @@ public class EnemyFollow : MonoBehaviour
         transform.LookAt(targetPosition);
         anim.SetBool("isEnemy1Attacking", true);
         enemy.SetDestination(transform.position);
+
+        if(!attacked)
+        {
+            attacked = true;
+            Invoke(nameof(AttackReset), attackDelay);
+        }
+
+
+    }
+
+    private void AttackReset()
+    {
+        attacked = false;
     }
 
     public void Damaged(float dmgAmount)
     {
-        Debug.Log("here");
         currentHealth -= dmgAmount;
 
         if(currentHealth < 1)
@@ -77,5 +94,14 @@ public class EnemyFollow : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public void AttackStart()
+    {
+        swordCollider.enabled = true;
+    }
+    public void AttackFinished()
+    {
+        swordCollider.enabled = false;
     }
 }
