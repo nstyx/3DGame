@@ -40,8 +40,23 @@ public class MagicSpell : MonoBehaviour
         
         if(other.tag == "Enemy")
         {
-            Debug.Log("hit enemy 2");
+            Debug.Log("hit enemy 1");
             other.gameObject.TryGetComponent<EnemyFollow>(out EnemyFollow enemy); //get enemy object
+            enemy.Damaged(3); //magic deals 3 damage
+            Destroy(gameObject);
+
+        }
+        if(other.tag == "Enemy2")
+        {
+            Debug.Log("hit enemy 2");
+            other.gameObject.TryGetComponent<Enemy2Follow>(out Enemy2Follow enemy); //get enemy object
+            enemy.Damaged(3); //magic deals 3 damage
+            Destroy(gameObject);
+
+        }
+        if(other.tag == "Boss")
+        {
+            other.gameObject.TryGetComponent<BossFollow>(out BossFollow enemy); //get enemy object
             enemy.Damaged(3); //magic deals 3 damage
             Destroy(gameObject);
 

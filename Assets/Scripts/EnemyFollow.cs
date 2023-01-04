@@ -19,6 +19,7 @@ public class EnemyFollow : MonoBehaviour
     public BoxCollider swordCollider;
 
     private bool attacked = false;
+    private bool enemyDead;
     private float attackDelay = 0.5f;
 
     // Start is called before the first frame update
@@ -28,21 +29,25 @@ public class EnemyFollow : MonoBehaviour
         anim.SetBool("isEnemy1Attacking", false);
         anim.SetBool("isEnemy1Walking", false);
         swordCollider.enabled = false;
+        enemyDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //is player in attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if(!enemyDead)
+        {
+            //is player in attack range
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(playerInSightRange) FollowPlayer();
-        if(!playerInSightRange) StopMoving();
-        if(playerInSightRange && playerInAttackRange) AttackPlayer();
-        if(!playerInAttackRange) anim.SetBool("isEnemy1Attacking", false);
-        //if(!playerInSightRange) anim.SetBool("isEnemy1Walking", false);
-        if(enemy.velocity.sqrMagnitude < 0.1) anim.SetBool("isEnemy1Walking", false);
+            if(playerInSightRange) FollowPlayer();
+            if(!playerInSightRange) StopMoving();
+            if(playerInSightRange && playerInAttackRange) AttackPlayer();
+            if(!playerInAttackRange) anim.SetBool("isEnemy1Attacking", false);
+            //if(!playerInSightRange) anim.SetBool("isEnemy1Walking", false);
+            if(enemy.velocity.sqrMagnitude < 0.1) anim.SetBool("isEnemy1Walking", false);
+        }
     }
     private void StopMoving()
     {
@@ -51,6 +56,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void FollowPlayer()
     {
+        Debug.Log("i see you");
         anim.SetBool("isEnemy1Walking", true);
         enemy.SetDestination(player.position);
     }
@@ -67,8 +73,6 @@ public class EnemyFollow : MonoBehaviour
             attacked = true;
             Invoke(nameof(AttackReset), attackDelay);
         }
-
-
     }
 
     private void AttackReset()
@@ -82,6 +86,8 @@ public class EnemyFollow : MonoBehaviour
 
         if(currentHealth < 1)
         {
+            enemyDead = true;
+            anim.SetBool("enemy1Dead", true);
             Destroy(gameObject);
         }
 

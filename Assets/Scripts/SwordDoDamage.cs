@@ -26,5 +26,17 @@ public class SwordDoDamage : MonoBehaviour
             enemy.Damaged(1); //sword deals 1 damage
 
         }
+        if(other.tag == "Enemy2")
+        {
+            other.gameObject.TryGetComponent<Enemy2Follow>(out Enemy2Follow enemy); //get enemy object
+            enemy.Damaged(1); //sword deals 1 damage
+
+        }
+        if(other.tag == "Boss")
+        {
+            other.gameObject.TryGetComponent<BossFollow>(out BossFollow enemy); //get enemy object
+            enemy.Damaged(1); //sword deals 1 damage
+
+        }
     }
 }

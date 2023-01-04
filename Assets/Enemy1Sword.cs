@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy1Sword : MonoBehaviour
 {
+    public int enemyDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,8 @@ public class Enemy1Sword : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            FindObjectOfType<HealthManager>().playerDamage(5);
+            Debug.Log("hit");
+            FindObjectOfType<HealthManager>().playerDamage(enemyDamage);
         }
     }
 }
