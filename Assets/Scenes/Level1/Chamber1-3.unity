@@ -1756,9 +1756,9 @@ Transform:
   - {fileID: 28843860}
   - {fileID: 786227559}
   - {fileID: 1728318041}
+  - {fileID: 1307868474}
   - {fileID: 15543035}
   - {fileID: 2144138357}
-  - {fileID: 1307868474}
   - {fileID: 1554180507}
   - {fileID: 1257655836}
   - {fileID: 462370583}
@@ -5679,8 +5679,9 @@ GameObject:
   - component: {fileID: 1837123069}
   - component: {fileID: 1837123068}
   - component: {fileID: 1837123072}
+  - component: {fileID: 1837123073}
   m_Layer: 0
-  m_Name: Portal
+  m_Name: PortalBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5757,14 +5758,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837123067}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.15, y: 1.97, z: 19.326}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0.47, y: 1.97, z: 14.74}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!65 &1837123072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5773,11 +5774,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837123067}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1837123073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837123067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f404c880734410aae259bfc4f40987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: Chamber1-2
 --- !u!4 &1888712488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 373466443468233704, guid: 5f694b26b76ac6e4f84df4df4cc4cefb, type: 3}
@@ -6327,12 +6341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383323c219289431b9fbe19babce25f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGold: 0
   goldText: {fileID: 2082147546}
   MagicBallUIBars:
   - {fileID: 303418802}
   - {fileID: 166360188}
-  foundBook: 0
   PA: {fileID: 440010156}
 --- !u!4 &2084316228
 Transform:
@@ -6362,7 +6374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   healthText: {fileID: 264264164}
   Swords:
   - {fileID: 1121839995}

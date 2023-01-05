@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldPickup : MonoBehaviour
+public class KeyPickup : MonoBehaviour
 {
-    public int gold = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +16,12 @@ public class GoldPickup : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            GameManager.currentGold += 1;
-            FindObjectOfType<GameManager>().addGold(gold);
+            //FindObjectOfType<GameManager>().addBook();
+            
             Destroy(gameObject);
         }
     }

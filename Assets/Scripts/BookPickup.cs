@@ -23,7 +23,6 @@ public class BookPickup : MonoBehaviour
         {
             FindObjectOfType<GameManager>().addBook();
             Destroy(gameObject);
-
         }
     }
 }

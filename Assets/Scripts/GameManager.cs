@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     public PlayerAttack PA;
 
-    // Start is called before the first frame update
     void Start()
     {
         goldText.text = "Gold: " + currentGold; //update UI gold on each scene init
