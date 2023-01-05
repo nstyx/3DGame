@@ -32,6 +32,12 @@ public class SwordDoDamage : MonoBehaviour
             enemy.Damaged(1); //sword deals 1 damage
 
         }
+        if(other.tag == "Enemy3")
+        {
+            other.gameObject.TryGetComponent<Enemy3Follow>(out Enemy3Follow enemy); //get enemy object
+            enemy.Damaged(1); //sword deals 1 damage
+
+        }
         if(other.tag == "Chest")
         {
             other.gameObject.TryGetComponent<Chest>(out Chest chest); //get enemy object

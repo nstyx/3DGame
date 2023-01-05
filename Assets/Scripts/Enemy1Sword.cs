@@ -21,7 +21,6 @@ public class Enemy1Sword : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Debug.Log("hit");
             FindObjectOfType<HealthManager>().playerDamage(enemyDamage);
         }
     }

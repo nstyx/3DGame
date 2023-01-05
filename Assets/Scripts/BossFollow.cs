@@ -11,7 +11,7 @@ public class BossFollow : MonoBehaviour
     public NavMeshAgent enemy;
     public Transform player;
 
-    public float sightRange = 7f;
+    public float sightRange = 8.5f;
     public float attackRange = 2f;
     public bool playerInSightRange;
     public bool playerInAttackRange;
@@ -80,7 +80,6 @@ public class BossFollow : MonoBehaviour
     private void AttackReset()
     {
         isAttacking = false;
-        Debug.Log("4 seconds passed");
     }
 
     public void Damaged(float dmgAmount)
@@ -122,14 +121,12 @@ public class BossFollow : MonoBehaviour
         StartCoroutine(FadeIn());
         yield return new WaitForSeconds(3.5f);
         Time.timeScale = 0f;
-        Debug.Log("Victory");
         //VictoryScreen
         Time.timeScale = 1f;
         SceneManager.LoadScene("VictoryScreen");
     }
     private IEnumerator DamageDelayAnim()
     {
-        Debug.Log("here3");
         yield return new WaitForSeconds(0.6f);
         anim.SetBool("damage", false);
     }

@@ -12,6 +12,7 @@ TagManager:
   - MovingBox
   - Chest
   - BannerTarget
+  - Enemy3
   layers:
   - Default
   - TransparentFX

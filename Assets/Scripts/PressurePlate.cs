@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class PressurePlate : MonoBehaviour //only exists in this scene, can use for BossDoor
 {
 
     public GameObject keyDoorOpen;
     public GameObject keyDoorClosed;
     public GameObject lvl2DoorOpen;
     public GameObject lvl2DoorClosed;
+
+    public GameObject bossDoorOpen;
+    public GameObject bossDoorClosed;
     private bool plateActivated;
 
     private void OnTriggerStay(Collider other)
@@ -39,6 +42,9 @@ public class PressurePlate : MonoBehaviour
         keyDoorClosed.SetActive(true);
         keyDoorOpen.SetActive(false);
         plateActivated = false;
+
+        bossDoorClosed.SetActive(true);
+        bossDoorOpen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,10 +61,15 @@ public class PressurePlate : MonoBehaviour
             keyDoorOpen.SetActive(true);
         }
 
-        if(plateActivated && GameManager.foundKeyLvl2 == 1)
+        if(GameManager.foundKeyLvl2 == 1)
         {
             lvl2DoorClosed.SetActive(false);
             lvl2DoorOpen.SetActive(true);
+        }
+        if(GameManager.foundKeyBoss == 1)
+        {
+            bossDoorClosed.SetActive(false);
+            bossDoorOpen.SetActive(true);
         }
         
     }

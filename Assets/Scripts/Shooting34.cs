@@ -15,7 +15,6 @@ public class Shooting34 : MonoBehaviour
     
     void Start()
     {
-        Debug.Log("ch4Win: " + L4DoorManager.ch3Win);
         doorClosed.SetActive(true);
         doorOpen.SetActive(false);
     }

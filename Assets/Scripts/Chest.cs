@@ -34,7 +34,6 @@ public class Chest : MonoBehaviour
         {
             //chestOpen = true;
             ShowReward();
-            Debug.Log("Chest open");
             Destroy(gameObject);
         }
     }

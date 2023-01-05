@@ -75,7 +75,6 @@ public class Puzzle23Manager : MonoBehaviour
         {
             p1Activated = true;
             puzzleSolved = true;
-            Debug.Log("Solved!");
         }
         else //reset
         {

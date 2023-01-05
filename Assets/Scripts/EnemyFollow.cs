@@ -9,7 +9,7 @@ public class EnemyFollow : MonoBehaviour
     public NavMeshAgent enemy;
     public Transform player;
 
-    public float sightRange = 3f;
+    public float sightRange = 3.5f;
     public float attackRange = 0.5f;
     public bool playerInSightRange;
     public bool playerInAttackRange;
@@ -56,7 +56,6 @@ public class EnemyFollow : MonoBehaviour
 
     private void FollowPlayer()
     {
-        Debug.Log("i see you");
         anim.SetBool("isEnemy1Walking", true);
         enemy.SetDestination(player.position);
     }

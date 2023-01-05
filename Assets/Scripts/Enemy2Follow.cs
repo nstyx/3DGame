@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class Enemy2Follow : MonoBehaviour
 {
-    [SerializeField] float currentHealth, maxHealth = 3f;
+    [SerializeField] float currentHealth, maxHealth = 6f;
     public NavMeshAgent enemy;
     public Transform player;
 
-    public float sightRange = 4f;
+    public float sightRange = 5f;
     public float attackRange = 0.5f;
     public bool playerInSightRange;
     public bool playerInAttackRange;

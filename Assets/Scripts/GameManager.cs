@@ -38,6 +38,18 @@ public class GameManager : MonoBehaviour
             MagicBallUIBars[1].gameObject.SetActive(true); //if no ammo deactivate spellUI
             MagicBallUIBars[0].gameObject.SetActive(false);
         }
+
+        if(Input.GetButtonDown("GetKeylvl23"))
+        {
+            foundKeyLvl2 = 1;
+            foundKeyLvl3 = 1;
+            Debug.Log("unlock23");
+        }
+        if(Input.GetButtonDown("GetKeyBoss"))
+        {
+            foundKeyBoss = 1;
+            Debug.Log("unlockBoss");
+        }
     }
 
     public void addGold(int goldCollected)

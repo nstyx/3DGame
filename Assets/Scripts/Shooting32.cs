@@ -9,7 +9,6 @@ public class Shooting32 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("ch2Win: " + L4DoorManager.ch2Win);
     }
 
     // Update is called once per frame
