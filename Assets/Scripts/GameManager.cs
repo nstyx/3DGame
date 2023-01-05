@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerAttack PA;
 
+    static public bool chest1Open;
+
     void Start()
     {
         goldText.text = "Gold: " + currentGold; //update UI gold on each scene init

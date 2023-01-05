@@ -15,6 +15,8 @@ public class MariaMovement : MonoBehaviour
     float turnSmooth = 15;
     
     public Animator anim;
+
+    private float pushPower = 1f;
     
     
     // Start is called before the first frame update
@@ -82,5 +84,19 @@ public class MariaMovement : MonoBehaviour
     {
             rb.constraints = RigidbodyConstraints.FreezeRotationX; //stop character from
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;//falling over
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("MovingBox"))
+        {
+            Rigidbody box = other.gameObject.GetComponent<Rigidbody>();
+
+            if(box != null)
+            {
+                Vector3 pushDirection = new Vector3(1, 0, 0);
+                box.velocity = pushDirection * pushPower;
+            }
+        }
     }
 }

@@ -9,6 +9,8 @@ TagManager:
   - Lever
   - Enemy2
   - Boss
+  - MovingBox
+  - Chest
   layers:
   - Default
   - TransparentFX
