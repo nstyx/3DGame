@@ -5,6 +5,8 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
 
+    public GameObject keyDoorOpen;
+    public GameObject keyDoorClosed;
     public GameObject lvl2DoorOpen;
     public GameObject lvl2DoorClosed;
     private bool plateActivated;
@@ -14,7 +16,6 @@ public class PressurePlate : MonoBehaviour
         if(other.tag == "MovingBox")
         {
             float distance = Vector3.Distance(transform.position, other.transform.position);
-            Debug.Log("Distance: " + distance);
 
             if(distance < 0.6f)
             {
@@ -28,13 +29,17 @@ public class PressurePlate : MonoBehaviour
                 }
             }
         }
+
     }
     // Start is called before the first frame update
     void Start()
     {
         lvl2DoorClosed.SetActive(true);
         lvl2DoorOpen.SetActive(false);
+        keyDoorClosed.SetActive(true);
+        keyDoorOpen.SetActive(false);
         plateActivated = false;
+        Debug.Log("Key: " + GameManager.foundKeyLvl2);
         
     }
 
@@ -43,10 +48,16 @@ public class PressurePlate : MonoBehaviour
     {
         if(!plateActivated)
         {
-            lvl2DoorClosed.SetActive(true);
-            lvl2DoorOpen.SetActive(false);
+            keyDoorClosed.SetActive(true);
+            keyDoorOpen.SetActive(false);
         }
         else
+        {
+            keyDoorClosed.SetActive(false);
+            keyDoorOpen.SetActive(true);
+        }
+
+        if(plateActivated && GameManager.foundKeyLvl2 == 1)
         {
             lvl2DoorClosed.SetActive(false);
             lvl2DoorOpen.SetActive(true);

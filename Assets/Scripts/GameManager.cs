@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
 
     static public bool chest1Open;
 
+    static public int foundKeyLvl2; // 0 no, 1 yes
+    static public int foundKeyLvl3;
+    static public int foundKeyBoss;
+
     void Start()
     {
         goldText.text = "Gold: " + currentGold; //update UI gold on each scene init
