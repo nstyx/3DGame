@@ -39,8 +39,6 @@ public class PressurePlate : MonoBehaviour
         keyDoorClosed.SetActive(true);
         keyDoorOpen.SetActive(false);
         plateActivated = false;
-        Debug.Log("Key: " + GameManager.foundKeyLvl2);
-        
     }
 
     // Update is called once per frame

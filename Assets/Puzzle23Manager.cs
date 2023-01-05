@@ -9,8 +9,10 @@ public class Puzzle23Manager : MonoBehaviour
     public GameObject presPlate2;
     public GameObject presPlate3;
 
-    public GameObject DoorClosed;
-    public GameObject DoorOpen;
+    public GameObject l3DoorClosed;
+    public GameObject l3DoorOpen;
+    public GameObject JDoorClosed;
+    public GameObject JDoorOpen;
 
     private bool p1Activated = false;
     private bool p2Activated = false;
@@ -18,7 +20,11 @@ public class Puzzle23Manager : MonoBehaviour
     private bool puzzleSolved = false;
     //order for solving is p2-p3-p1
 
-
+    void Start()
+    {
+        JDoorOpen.gameObject.SetActive(false);
+        l3DoorOpen.gameObject.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,13 +36,18 @@ public class Puzzle23Manager : MonoBehaviour
         }
         if(!puzzleSolved)
         {
-            DoorClosed.gameObject.SetActive(true);
-            DoorOpen.gameObject.SetActive(false);
+            JDoorClosed.gameObject.SetActive(true);
+            JDoorOpen.gameObject.SetActive(false);
         }
         else if(puzzleSolved)
         {
-            DoorClosed.gameObject.SetActive(false);
-            DoorOpen.gameObject.SetActive(true);
+            JDoorClosed.gameObject.SetActive(false);
+            JDoorOpen.gameObject.SetActive(true);
+        }
+        if(puzzleSolved && GameManager.foundKeyLvl3 == 1)
+        {
+            l3DoorClosed.gameObject.SetActive(false);
+            l3DoorOpen.gameObject.SetActive(true);
         }
     }
 
@@ -74,55 +85,3 @@ public class Puzzle23Manager : MonoBehaviour
         }
     }
 }
-/*
-------
-
-    void Update()
-    {
-        // check if pressure plate 2 has been activated
-        if (pressurePlate2.GetComponent<PressurePlate>().activated && !p2Activated)
-        {
-            p2Activated = true;
-            StartCoroutine(CheckForPlate3());
-        }
-    }
-
-    IEnumerator CheckForPlate3()
-    {
-        yield return new WaitForSeconds(3.0f); // wait for 3 seconds
-
-        // check if pressure plate 3 has been activated within 3 seconds
-        if (pressurePlate3.GetComponent<PressurePlate>().activated)
-        {
-            p3Activated = true;
-            StartCoroutine(CheckForPlate1());
-        }
-        else
-        {
-            // reset the puzzle if pressure plate 3 was not activated within 3 seconds
-            p2Activated = false;
-            p3Activated = false;
-        }
-    }
-
-    IEnumerator CheckForPlate1()
-    {
-        yield return new WaitForSeconds(3.0f); // wait for 3 seconds
-
-        // check if pressure plate 1 has been activated within 3 seconds
-        if (pressurePlate1.GetComponent<PressurePlate>().activated)
-        {
-            p1Activated = true;
-            puzzleSolved = true;
-            Debug.Log("Puzzle solved!");
-        }
-        else
-        {
-            // reset the puzzle if pressure plate 1 was not activated within 3 seconds
-            p2Activated = false;
-            p3Activated = false;
-            p1Activated = false;
-        }
-    }
-
-*/

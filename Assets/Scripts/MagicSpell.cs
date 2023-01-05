@@ -23,7 +23,6 @@ public class MagicSpell : MonoBehaviour
     {
         if(!collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy")) // if not player or enemy, aka, any scene item, destroy
         {
-            Debug.Log("hit something");
             Destroy(gameObject);
         }
 
@@ -59,6 +58,13 @@ public class MagicSpell : MonoBehaviour
             other.gameObject.TryGetComponent<BossFollow>(out BossFollow enemy); //get enemy object
             enemy.Damaged(3); //magic deals 3 damage
             Destroy(gameObject);
+
+        }
+        if(other.tag == "BannerTarget")
+        {
+            Debug.Log("hitBanner");
+            other.gameObject.TryGetComponent<BannerTarget>(out BannerTarget bannerTarget); //get enemy object
+            bannerTarget.getHit();
 
         }
     }

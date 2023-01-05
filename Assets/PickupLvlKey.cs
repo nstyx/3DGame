@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickupLvlKey : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] string fromLevel;
     void Start()
     {
         
@@ -20,10 +21,24 @@ public class PickupLvlKey : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            //open door to lvl2
-            GameManager.foundKeyLvl2 = 1;
-            Debug.Log("keylvl2: " + GameManager.foundKeyLvl2);
-            Destroy(gameObject);
+            if(fromLevel == "1")
+            {
+                //open door to lvl2
+                GameManager.foundKeyLvl2 = 1;
+                Destroy(gameObject);
+            }
+            if(fromLevel == "2")
+            {
+                //open door to lvl3
+                GameManager.foundKeyLvl3 = 1;
+                Destroy(gameObject);
+            }
+            if(fromLevel == "3")
+            {
+                //open boss door
+                GameManager.foundKeyBoss = 1;
+                Destroy(gameObject);
+            }
         }
     }
 }
